@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace Futóverseny
 {
-    class Program
+    class Verseny
     {
-        static void Main(string[] args)
-        {
-            Verseny verseny = new Verseny();
-            verseny.Start();
-        }
     }
 }
