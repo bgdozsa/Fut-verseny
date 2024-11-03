@@ -47,6 +47,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pálya.cs" />
     <Compile Include="Verseny.cs" />
+    <Compile Include="Versenyző.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
