@@ -10,9 +10,9 @@ namespace Futóverseny
     {
         public Pálya pálya;
         public SortedSet<int> győztesek;
-        private Versenyző[] versenyzők;
+        private List<Versenyző> versenyzők;
         private int versenyzőkSzáma;
-        private const int szünet = 150; //várakozás ezredmásodpercben a lépések között
+        private const int SZÜNET = 100; //várakozás ezredmásodpercben a lépések között
 
         public void Start()
         {
@@ -21,10 +21,10 @@ namespace Futóverseny
             Console.Write($"A versenyzők száma (< {Console.LargestWindowHeight - 9}): ");
             versenyzőkSzáma = Convert.ToInt32(Console.ReadLine());
             //létrehozzuk a versenyzőobjektumokat (tömbelemek):
-            versenyzők = new Versenyző[versenyzőkSzáma];
+            versenyzők = new List<Versenyző>();
             for (int i = 0; i < versenyzőkSzáma; i++)
             {
-                versenyzők[i] = new Versenyző();
+                versenyzők.Add(new Versenyző());
                 versenyzők[i].Létrehoz(i);
                 Vár(10);    //A várakozásra azért van szükség, mert ha a versenyzők nagyon gyorsan egymás után hozzák létre a Random objektumokat, akkor azonos lesz a sorozatok kezdőértéke. (A kezdőértéket a rendszeridőből határozza meg.)
 
@@ -48,7 +48,7 @@ namespace Futóverseny
                 Console.CursorTop = 0;
                 for (int i = 0; i < versenyzőkSzáma; i++)
                     versenyzők[i].Fut(this);
-                Vár(szünet);
+                Vár(SZÜNET);
             } while (győztesek.Count == 0);
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("Vége a versenynek.");
